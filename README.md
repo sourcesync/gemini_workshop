@@ -7,3 +7,8 @@ This is the hands-on tutorial portion of GSI Technology's Gemini APU Workshop.
 * Jupyter Notebook server
 * Gemini APU Board (Installed)
 * Gemini Python Libraries
+
+# Getting Started
+
+Proceed directly to the Gemin_ShallowEnd jupyter notebook in this repository.  It is well-documented and self-explanatory.
+
