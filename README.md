@@ -10,5 +10,5 @@ This is the hands-on tutorial portion of GSI Technology's Gemini APU Workshop.
 
 # Getting Started
 
-Proceed directly to the Gemin_ShallowEnd jupyter notebook in this repository.  It is well-documented and self-explanatory.
+Proceed directly to the Gemini_ShallowEnd jupyter notebook in this repository.  It is well-documented and self-explanatory.
 
