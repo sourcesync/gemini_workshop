@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker build ..
+docker build -f Dockerfile ..
 
