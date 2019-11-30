@@ -1,8 +1,6 @@
 proxy:
   secretToken: "1c9b1e0b7e6235a6b10f6cbd5a0eee63683d6ece9c882f01863333cfa75ab98f"
-  service:
-    loadBalancerIP: 35.208.85.127
-  
+
 singleuser:
   image:
     # Get the latest image tag at:
@@ -14,11 +12,7 @@ singleuser:
     # name: docker.io/gosha1128/geminiws
     name: us.gcr.io/gsitechnology/geminiws
     tag: v6
-  profileList:
-    - display_name: "Gemini Practice Workshop"
-      description: "Using Simulated APU Hardware"
-      default: true
-  defaultUrl: "/notebooks/Test.ipynb"
+  defaultUrl: "/lab"
   imagePullSecret:
     registry: us.gcr.io
     username: _json_key
@@ -36,19 +30,8 @@ singleuser:
         "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/geminiws%40gsitechnology.iam.gserviceaccount.com"
       }
 
-auth:
-  type: dummy
-  dummy:
-    password: 'gemini2019'
-  whitelist:
-    users:
-      - gwilliams@gsitechnology.com
-
 hub:
   extraConfig:
     jupyterlab: |
       c.Spawner.cmd = ['jupyter-labhub']
   imagePullPolicy: Always
-  service:
-    loadBalancerIP: 35.208.85.127
-
