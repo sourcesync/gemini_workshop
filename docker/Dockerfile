@@ -1,6 +1,8 @@
 FROM jupyter/datascience-notebook:177037d09156
 
-WORKDIR /home/
+RUN mkdir -p /home/gemini
 
-COPY notebooks/Test.ipynb /home/
+WORKDIR /home/gemini
+
+COPY notebooks/Test.ipynb /home/gemini
 
