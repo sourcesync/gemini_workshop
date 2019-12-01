@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -x
+set -e
+
 gcloud components install kubectl
 
 gcloud container clusters create \

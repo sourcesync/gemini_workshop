@@ -1,16 +1,22 @@
 #!/bin/bash
 
-openssl rand -hex 32
+set -e
+set -x
 
-read -p "Did you set the secretToken in config.yaml (y/n)? " answer
-case ${answer:0:1} in
-    y|Y )
-        echo Yes
-    ;;
-    * )
-        exit 1
-    ;;
-esac
+echo "num args=$#"
+
+if [ "$#" -ne "1" ]; then
+	openssl rand -hex 32
+	read -p "Did you set the secretToken in config.yaml (y/n)? " answer
+	case ${answer:0:1} in
+	    y|Y )
+		echo Yes
+	    ;;
+	    * )
+		exit 1
+	    ;;
+	esac
+fi
 
 helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
 helm repo update
