@@ -4,10 +4,9 @@ set -x
 set -e
 
 IMAGE="geminiws"
-TAG="v9"
+TAG="v10"
 
 docker build -f Dockerfile -t "$IMAGE:$TAG" ..
-
 docker tag "$IMAGE:$TAG" "us.gcr.io/gsitechnology/$IMAGE:$TAG"
 docker push "us.gcr.io/gsitechnology/$IMAGE:$TAG"
 
