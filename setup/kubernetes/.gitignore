@@ -2,3 +2,5 @@
 *.yaml*
 *.key
 *.csr
+*.json
+
