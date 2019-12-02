@@ -3,12 +3,22 @@
 set -x
 set -e
 
-IMAGE="geminiws"
-TAG="v10"
+IMAGEBASE="geminiws_base"
+TAGBASE="v1"
 
-docker build -f Dockerfile -t "$IMAGE:$TAG" ..
-docker tag "$IMAGE:$TAG" "us.gcr.io/gsitechnology/$IMAGE:$TAG"
-docker push "us.gcr.io/gsitechnology/$IMAGE:$TAG"
+IMAGENB="geminiws_nb"
+TAGNB="v1"
+
+# base
+docker build -f Dockerfile.base -t "$IMAGEBASE:$TAGBASE" ..
+docker tag "$IMAGEBASE:$TAGBASE" "us.gcr.io/gsitechnology/$IMAGEBASE:$TAGBASE"
+docker push "us.gcr.io/gsitechnology/$IMAGEBASE:$TAGBASE"
+
+# nb
+docker build -f Dockerfile.nb -t "$IMAGENB:$TAGNB" ..
+docker tag "$IMAGENB:$TAGNB" "us.gcr.io/gsitechnology/$IMAGENB:$TAGNB"
+docker push "us.gcr.io/gsitechnology/$IMAGENB:$TAGNB"
+
 
 #docker tag "$IMAGE:$TAG" "docker.io/gosha1128/$IMAGE:$TAG"
 #docker push "docker.io/gosha1128/$IMAGE:$TAG"
