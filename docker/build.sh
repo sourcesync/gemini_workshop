@@ -7,7 +7,7 @@ IMAGEBASE="geminiws_base"
 TAGBASE="v1"
 
 IMAGENB="geminiws_nb"
-TAGNB="v1"
+TAGNB="v5"
 
 # base
 docker build -f Dockerfile.base -t "$IMAGEBASE:$TAGBASE" ..

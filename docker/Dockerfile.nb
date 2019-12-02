@@ -3,12 +3,14 @@ FROM geminiws_base:v1
 USER root
 
 COPY notebooks/Test.ipynb /home/gemini
+COPY notebooks/gsichip.png /home/gemini
 COPY notebooks/gnl.py /home/gemini
 COPY notebooks/surprise.jpg /home/gemini
 COPY notebooks/lkerbs/radio-wave-classifier/faiss_hamming.ipynb /home/gemini
 COPY notebooks/lkerbs/radio-wave-classifier/data /home/gemini/data
 
 RUN chmod ugo+rw /home/gemini/Test.ipynb
+RUN chmod ugo+rw /home/gemini/gsichip.png
 RUN chmod ugo+rw /home/gemini/gnl.py
 RUN chmod ugo+rw /home/gemini/surprise.jpg
 RUN chmod ugo+rw /home/gemini/faiss_hamming.ipynb
