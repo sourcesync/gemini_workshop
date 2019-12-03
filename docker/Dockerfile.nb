@@ -5,14 +5,22 @@ USER root
 COPY notebooks/Test.ipynb /home/gemini
 COPY notebooks/gsichip.png /home/gemini
 COPY notebooks/gnl.py /home/gemini
+COPY notebooks/rf_signals.py /home/gemini
+COPY notebooks/unknown_signals.py /home/gemini
+COPY notebooks/knn.py /home/gemini
 COPY notebooks/surprise.jpg /home/gemini
+COPY notebooks/asurprise.jpg /home/gemini
 COPY notebooks/PracticeWorkshopSimulatedGemini.ipynb /home/gemini
 COPY notebooks/data /home/gemini/data
 
 RUN chmod ugo+rw /home/gemini/Test.ipynb
 RUN chmod ugo+rw /home/gemini/gsichip.png
 RUN chmod ugo+rw /home/gemini/gnl.py
+RUN chmod ugo+rw /home/gemini/rf_signals.py
+RUN chmod ugo+rw /home/gemini/unknown_signals.py
+RUN chmod ugo+rw /home/gemini/knn.py
 RUN chmod ugo+rw /home/gemini/surprise.jpg
+RUN chmod ugo+rw /home/gemini/asurprise.jpg
 RUN chmod ugo+rw /home/gemini/PracticeWorkshopSimulatedGemini.ipynb
 
 USER jovyan

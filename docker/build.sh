@@ -3,19 +3,21 @@
 set -x
 set -e
 
+#NOCACHE="--no-cache"
+
 IMAGEBASE="geminiws_base"
 TAGBASE="v1"
 
 IMAGENB="geminiws_nb"
-TAGNB="v6"
+TAGNB="v7"
 
 # base
-docker build -f Dockerfile.base -t "$IMAGEBASE:$TAGBASE" ..
+docker build $NOCACHE -f Dockerfile.base -t "$IMAGEBASE:$TAGBASE" ..
 docker tag "$IMAGEBASE:$TAGBASE" "us.gcr.io/gsitechnology/$IMAGEBASE:$TAGBASE"
 docker push "us.gcr.io/gsitechnology/$IMAGEBASE:$TAGBASE"
 
 # nb
-docker build -f Dockerfile.nb -t "$IMAGENB:$TAGNB" ..
+docker build $NOCACHE -f Dockerfile.nb -t "$IMAGENB:$TAGNB" ..
 docker tag "$IMAGENB:$TAGNB" "us.gcr.io/gsitechnology/$IMAGENB:$TAGNB"
 docker push "us.gcr.io/gsitechnology/$IMAGENB:$TAGNB"
 
