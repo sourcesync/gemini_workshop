@@ -9,7 +9,7 @@ IMAGEBASE="geminiws_base"
 TAGBASE="v1"
 
 IMAGENB="geminiws_nb"
-TAGNB="v7"
+TAGNB="v8"
 
 # base
 docker build $NOCACHE -f Dockerfile.base -t "$IMAGEBASE:$TAGBASE" ..
