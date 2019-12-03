@@ -19,7 +19,10 @@ def init( bit_vectors ):
     global loaded, db_bit_vectors
     db_bit_vectors = bit_vectors
     loaded = True
-    print("gnl initialized.")
+    print("GNL Initialized.")
+    
+def get_device_info():
+    return "Found A Gemini Device (Simulated.)"
     
 def search(bit_vectors_test):
 
@@ -93,7 +96,7 @@ def get_accuracy(snrs, labels, test_snrs, test_labels, I, plot=False):
             x.append(i)
             y.append((total_correct[i]/total[i])*100)
 
-#figure(figsize=(15,8))
+        #figure(figsize=(15,8))
         plt.plot(x, y)
         plt.xlabel('Signal to Noise Ratio')
         plt.ylabel('Accuracy')

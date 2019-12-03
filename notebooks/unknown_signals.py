@@ -53,7 +53,7 @@ def load():
         path = 'data/npy_data/signal_dataset/test/snrs' + str(sigcount) + '.npy'
         snrs = np.load(path)
     loaded = True
-    print("unknown signal database loaded!")
+    print("The Unknown Signals Database Loaded!")
     
 def get_fingerprints():
     return bit_vectors
@@ -86,7 +86,7 @@ def randisplay():
         idx = np.where(labels[j] == 1)[0][0]
         #print(idx)
         wave_type = classes[ idx ]
-        title = '? Radio Wave'
+        title = '? Unknown Radio Wave'
         ax[r,c].set_title(title)
         xmax = 1024
         ymax = max([max(first),max(second)])

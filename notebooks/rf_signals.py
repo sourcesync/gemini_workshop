@@ -53,7 +53,7 @@ def load():
         path = 'data/npy_data/signal_dataset/train/snrs' + str(sigcount) + '.npy'
         snrs = np.load(path)
     loaded = True
-    print("rf signal database loaded!")
+    print("The RF Signal Database Loaded!")
     
 def get_fingerprints():
     return bit_vectors
