@@ -3,11 +3,12 @@
 set -x
 set -e
 
+NODES=1   # 7
 gcloud components install kubectl
 
 gcloud container clusters create \
   --machine-type n1-standard-2 \
-  --num-nodes 7 \
+  --num-nodes $NODES \
   --zone us-central1-b \
   --cluster-version latest \
   geminiws

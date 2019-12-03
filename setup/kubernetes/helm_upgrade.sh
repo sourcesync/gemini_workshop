@@ -7,7 +7,7 @@ RELEASE=jhub
 
 helm upgrade $RELEASE jupyterhub/jupyterhub   --debug --version=0.8.2   --values config.yaml
 
-./delete_all_pods.sh
+#./delete_all_pods.sh
 
 while True; do
 
