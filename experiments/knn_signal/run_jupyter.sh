@@ -14,5 +14,4 @@ else
 fi
 export LD_LIBRARY_PATH=00.09.00/libs
 export PYTHONPATH=00.09.00:00.09.00/gnlpy:00.09.00/gnlpy/lib:00.09.00/libs
-jupyter lab --ip=192.168.32.201
-echo "run_hamming completed"
+/home/administrator/anaconda3/bin/jupyter lab --ip=192.168.32.201

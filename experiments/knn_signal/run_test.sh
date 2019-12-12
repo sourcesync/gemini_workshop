@@ -16,5 +16,5 @@ PYTHON=python3.6
 #PYTHON=/home/administrator/anaconda3/bin/python3
 export LD_LIBRARY_PATH=00.09.00/libs
 export PYTHONPATH=00.09.00:00.09.00/gnlpy:00.09.00/gnlpy/lib:00.09.00/libs
-$PYTHON test2.py
+$PYTHON test4.py
 echo "run_hamming completed"
