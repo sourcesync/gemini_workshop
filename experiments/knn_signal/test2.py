@@ -21,29 +21,35 @@ np.set_printoptions(threshold=sys.maxsize)
 assert os.environ['LD_LIBRARY_PATH'].find("00.09.00/libs") is not -1, "LD_LIBRARY_PATH is not set"
 
 def setUpGNL():
-    print(datetime.datetime.now(),"1")
+    print("init 1")
     s = gnl_bindings.gdl_init()
     if s:
         raise Exception('gnl_bindings.gdl_init failed with {}'.format(s))
+
+    print("alloc 2")
     s, gdl_ctx = gnl_bindings.gdl_context_find_and_alloc(apuc_count=4, mem_size=0x10000000)  # need to change num of apuc
-    print(datetime.datetime.now(),"2")
     if s:
         raise Exception('gnl_bindings.gdl_context_find_and_alloc failed with {}'.format(s))
+
+    print("init 3")
     s = gnl_bindings.init()
-    print(datetime.datetime.now(),"3")
     if s:
         raise Exception('gnl_bindings.init failed with {}'.format(s))
+
+    print("4")
     s, base_ctx = gnl_bindings.create_base_context(gdl_ctx)
-    print(datetime.datetime.now(),"4")
     if s:
         raise Exception('gnl_bindings.create_base_context failed with {}'.format(s))
+    
+    print("5")
     s, gnl_ctxs = gnl_bindings.create_contexts(base_ctx, [4])  # need to change num of apuc
-    print(datetime.datetime.now(),"5")
     if s:
         raise Exception('gnl_bindings.create_contexts failed with {}'.format(s))
+    
+    print("6")
     ctx = gnl_ctxs[0]
     s = gnl_bindings.pm_ctl(ctx, True)
-    print(datetime.datetime.now(),"6")
+
     if s:
         raise Exception('gnl_bindings.pm_ctl failed with {}'.format(s))
     return gdl_ctx, base_ctx, ctx
@@ -71,13 +77,11 @@ if __name__ == '__main__':
         print("Invalid arguments.")
         sys.exit()
 
-    
-    print(datetime.datetime.now(),"before gnl setup")
     gdl_ctx, base_ctx, ctx = setUpGNL()
-    print(datetime.datetime.now(),"after gnl setup")
 
     if os.path.exists("bit_vector_train50_padded256.npy"):
-        print("found padded train file, loading...")
+
+        print("found file, loading...")
         np_records = np.load("bit_vector_train50_padded256.npy")
         print("loaded.")
     
