@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 # constants
 bitsize = 50
-sigcount=10000
+sigcount=5000
 classes = ['32PSK',
  '16APSK',
  '32QAM',
@@ -37,35 +37,32 @@ classes = ['32PSK',
 loaded = False
 bit_vectors = None
 raw_signals = None
-labels = None
 snrs = None
+labels = None
 
-# load the "known" signals database using the training set data
+# load the "unknown" signals using the test set.  Technically, we have the ground truth here.  The 
+# important thing is that none of these signals were used during training.
 def load():
     global loaded, bit_vectors, raw_signals, labels, snrs
     if not loaded:
-        path = 'data/bit_vector/faiss_test/bit_vector_train' + str(bitsize) + '.npy'
+        path = 'bit_vector_test50_padded256.npy'
         bit_vectors = np.load(path)
-        path = 'data/npy_data/signal_dataset/train/signals' + str(sigcount) + '.npy'
+        bit_vectors = bit_vectors[0:sigcount,:]
+        path = 'data/npy_data/signal_dataset/test/signals' + str(sigcount) + '.npy'
         raw_signals = np.load(path)
-        path = 'data/npy_data/signal_dataset/train/labels' + str(sigcount) + '.npy'
+        path = 'data/npy_data/signal_dataset/test/labels' + str(sigcount) + '.npy'
         labels = np.load(path)
-        path = 'data/npy_data/signal_dataset/train/snrs' + str(sigcount) + '.npy'
+        path = 'data/npy_data/signal_dataset/test/snrs' + str(sigcount) + '.npy'
         snrs = np.load(path)
     loaded = True
     sz = bit_vectors.shape
-    print("The known RF signal database loaded successfully.  There are %d signals, of bitsize=%d" % ( sz[0], sz[1]*8 ))
+    print("The unknown RF signals database loaded successfully.  There %d signals of bitsize=%d." % ( sz[0], sz[1]*8 ) )
    
-# return the numpy array of bitvectors
+# retrieve the fingerprints array
 def get_fingerprints():
     return bit_vectors
 
-# return actual labels and signal-to-noise data
-def get_labels():
-    global snrs, labels
-    return snrs, labels
-   
-# display 9 signals at random
+# choose 9 signals and randomly display
 def randisplay():
     global loaded, bit_vectors
     if not loaded:
@@ -87,7 +84,7 @@ def randisplay():
         ax[r,c].plot(t, second)
         idx = np.where(labels[j] == 1)[0][0]
         wave_type = classes[ idx ]
-        title = wave_type + ' Radio Wave'
+        title = '? Unknown Radio Wave'
         ax[r,c].set_title(title)
         xmax = 1024
         ymax = max([max(first),max(second)])

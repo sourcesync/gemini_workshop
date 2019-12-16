@@ -4,3 +4,4 @@ places*
 nohup*
 bit_vector*
 .ipynb*
+__pycache__*

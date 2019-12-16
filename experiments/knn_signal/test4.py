@@ -1,10 +1,10 @@
 import sys
 import datetime
 
-sys.path.insert(0, '00.09.00')
-sys.path.append('00.09.00/gnlpy')
-sys.path.append('00.09.00/gnlpy/lib')
-sys.path.append('00.09.00/libs')
+#sys.path.insert(0, '00.09.00')
+#sys.path.append('00.09.00/gnlpy')
+#sys.path.append('00.09.00/gnlpy/lib')
+#sys.path.append('00.09.00/libs')
 
 import numpy as np
 import time
