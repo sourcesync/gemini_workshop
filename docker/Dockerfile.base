@@ -1,0 +1,27 @@
+FROM jupyter/datascience-notebook:177037d09156
+
+USER root
+
+RUN mkdir -p /home/gemini
+RUN chmod ugo+rw /home/gemini
+RUN chown jovyan /home/gemini
+
+RUN apt-get update -y
+RUN apt-get upgrade -y
+RUN apt-get install -y libopenblas-dev
+RUN apt-get -y autoremove
+RUN apt-get clean
+
+COPY docker/faiss /opt/faiss
+WORKDIR /opt/faiss/
+RUN make install
+RUN make py
+RUN make -C python install
+RUN cp /opt/faiss/libfaiss.so /usr/lib
+RUN cp /opt/faiss/demos/demo_ivfpq_indexing /home/gemini
+RUN rm -fr /opt/faiss
+
+USER jovyan
+WORKDIR /home/gemini
+
+#USER root

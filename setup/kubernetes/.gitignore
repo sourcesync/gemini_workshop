@@ -1,0 +1,6 @@
+*.yaml
+*.yaml*
+*.key
+*.csr
+*.json
+
