@@ -88,7 +88,7 @@ if [ ! "$RET" -eq "0" ]; then
 fi
 
 echo "warning: killing all current SSH tunnels on this machine!"
-killall ssh
+sudo killall ssh
 sleep 1
 
 # create ssh tunnel to apu machine ports
@@ -101,7 +101,7 @@ do
 	echo "creating tunnel for $i"
 	if [ "$MAC" -eq "1" ]; then
 		echo "creating for mac..."
-		sshpass -p "$PASS" ssh -L 172.17.0.1:$i:172.17.0.1:$i $DEST -fN
+		sshpass -p $PASS ssh -L 172.17.0.1:$i:172.17.0.1:$i $DEST -fN
 		RET=$?
 		if [ ! "$RET" -eq "0" ]; then
 			echo "Could not create the tunnel for port=$i"
@@ -147,7 +147,7 @@ done
 echo "creating tunnel for 8090"
 if [ "$MAC" -eq "1" ]; then
 	echo "creating for mac..."
-	sshpass -p "$PASS" ssh -L 192.168.88.221:8090:172.17.0.1:8090 $DEST -fN
+	sshpass -p $PASS ssh -L 192.168.88.221:8090:172.17.0.1:8090 $DEST -fN
 	RET=$?
 	if [ ! "$RET" -eq "0" ]; then
 		echo "Could not create the tunnel for port=$i"
