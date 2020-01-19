@@ -40,7 +40,7 @@ if [ ! "$RET" -eq "0" ]; then
 		fi
 	else
 		echo "creating virtual IP for linux..."
-		ifconfig "$ETH:0" 192.168.88.221
+		sudo ifconfig "$ETH:0" 192.168.88.221
 		RET="$?"
 		if [ ! "$RET" -eq "0" ]; then
 			echo "Could not add IP to interface=$ETH"
@@ -58,7 +58,7 @@ if [ ! "$RET" -eq "0" ]; then
 	echo "172.17.0.1 does not exist. Adding IP to interface=$ETH..."
 	if [ "$MAC" -eq "1" ]; then
 		echo "creating 172 virtual IP for mac..."
-		ifconfig lo0 alias 172.17.0.1
+		sudo ifconfig lo0 alias 172.17.0.1
 		RET="$?"
 		if [ ! "$RET" -eq "0" ]; then
 			echo "Could not add IP to interface=lo0"
@@ -91,9 +91,9 @@ killall ssh
 sleep 1
 
 # create ssh tunnel to apu machine ports
-# TODO: removed 8091, 8099
+# TODO: removed 4999
 
-ports=(4999 5000 7654 8093 8098 8097 8094 6379 7707 8087 8085 8095 5432 5001 8092 7777 8096 7780 )
+ports=( 5000 8098 8097 8094 6379 7707 8085 8095 5432 5001 8092 7777 8096 7780 8091 8099 8093 7654 )
 
 for i in "${ports[@]}"
 do
@@ -108,7 +108,7 @@ do
 		fi
 	else
 		echo "creating for linux..."
-		sshpass -p "$PASS" ssh -L 172.17.0.1:$i:172.17.0.1:$i george@192.168.99.21 -fN
+		ssh -L 172.17.0.1:$i:172.17.0.1:$i $DEST -fN
 		RET=$?
 		if [ ! "$RET" -eq "0" ]; then
 			echo "Could not create the tunnel for port=$i"
@@ -117,19 +117,29 @@ do
 	fi
 
 	sleep 0.5
-	echo "testing the tunnel"
-	nc -z 172.17.0.1 $i
-	RET=$?
-	if [ ! "$RET" -eq "0" ]; then
-		echo "Could not validate the tunnel for $i. Trying again..."
-		sleep 1
+	echo "testing the tunnel for $i"
+
+	tries=(1 2 3 4 5 6 7 8 9 10)
+	for j in "${tries[@]}"
+	do
+		ps aux|grep "ssh -L"
+
 		nc -z 172.17.0.1 $i
 		RET=$?
+		echo "NCRET=$RET"
 		if [ ! "$RET" -eq "0" ]; then
-			echo "Could not validate the tunnel for $i"
-			exit 1
+			echo "Could not validate the tunnel for $i (try=$j). Trying again..."
+		else
+			break
 		fi
+
+		sleep 1
+	done
+	if [ ! "$RET" -eq "0" ]; then
+		echo "Could not validate the tunnel for $i"
+		exit 1
 	fi
+	echo "Tunnel validated for $i"
 
 done
 
@@ -144,7 +154,7 @@ if [ "$MAC" -eq "1" ]; then
 	fi
 else
 	echo "creating for linux..."
-	sshpass -p "$PASS" ssh -L 192.168.88.221:8090:172.17.0.1:8090 george@192.168.99.21 -fN
+	ssh -L 192.168.88.221:8090:172.17.0.1:8090 $DEST -fN
 	if [ ! "$RET" -eq "0" ]; then
 		echo "Could not create the tunnel for port=$i"
 		exit
