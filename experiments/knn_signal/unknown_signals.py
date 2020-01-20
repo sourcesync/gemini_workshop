@@ -45,7 +45,7 @@ labels = None
 def load():
     global loaded, bit_vectors, raw_signals, labels, snrs
     if not loaded:
-        path = 'bit_vector_test50_padded256.npy'
+        path = 'data/bit_vector_test50_padded256.npy'
         bit_vectors = np.load(path)
         bit_vectors = bit_vectors[0:sigcount,:]
         path = 'data/npy_data/signal_dataset/test/signals' + str(sigcount) + '.npy'

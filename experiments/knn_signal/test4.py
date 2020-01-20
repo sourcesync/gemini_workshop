@@ -12,13 +12,15 @@ import gnl_bindings
 import gnl_bindings_utils as gbu
 import random
 import os
-import faiss
+
+if False:
+    import faiss
 
 np.set_printoptions(threshold=sys.maxsize)
 
 
 # Environment variable assert
-assert os.environ['LD_LIBRARY_PATH'].find("00.09.00/libs") is not -1, "LD_LIBRARY_PATH is not set"
+assert os.environ['LD_LIBRARY_PATH'].find("00.15.00/libs") is not -1, "LD_LIBRARY_PATH is not set"
 
 def setUpGNL():
     print("GDL init...")
@@ -162,15 +164,20 @@ if __name__ == '__main__':
         #
         # FAISS Test
         #
-        start = time.time()
-        print(datetime.datetime.now(),"searching faiss knn_hamming !!!!!!!!!!!")
-        index = faiss.IndexBinaryFlat(256)
-        crec = np.ascontiguousarray(faiss_np_records)
-        index.add(crec)
-        qrec = np.ascontiguousarray(np_queries)
-        D, I = index.search(qrec, k)
-        end = time.time()
-        FAISSSearchTime = end - start
+        if False:
+            start = time.time()
+            print(datetime.datetime.now(),"searching faiss knn_hamming !!!!!!!!!!!")
+            index = faiss.IndexBinaryFlat(256)
+            crec = np.ascontiguousarray(faiss_np_records)
+            index.add(crec)
+            qrec = np.ascontiguousarray(np_queries)
+            D, I = index.search(qrec, k)
+            end = time.time()
+            FAISSSearchTime = end - start
+        else:
+            FAISSSearchTime = 0
+        
+
         print(datetime.datetime.now()," search duration:", FAISSSearchTime )
 
         # capture results
