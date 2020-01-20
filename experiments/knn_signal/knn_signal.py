@@ -1,10 +1,10 @@
 import sys
 import datetime
 
-sys.path.insert(0, '00.09.00')
-sys.path.append('00.09.00/gnlpy')
-sys.path.append('00.09.00/gnlpy/lib')
-sys.path.append('00.09.00/libs')
+sys.path.insert(0, '00.15.00')
+sys.path.append('00.15.00/gnlpy')
+sys.path.append('00.15.00/gnlpy/lib')
+sys.path.append('00.15.00/libs')
 
 import numpy as np
 import time
@@ -15,7 +15,7 @@ import os
 import faiss
 
 # Environment variable assert
-assert os.environ['LD_LIBRARY_PATH'].find("00.09.00/libs") is not -1, "LD_LIBRARY_PATH is not set"
+assert os.environ['LD_LIBRARY_PATH'].find("00.15.00/libs") is not -1, "LD_LIBRARY_PATH is not set"
 
 def setUpSim():
     cfg = [gbu.sim_config(0xa0000000, 1, 4)]
