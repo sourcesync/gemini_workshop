@@ -1,0 +1,419 @@
+version: '3.2'
+services:
+ python-api-client:
+  container_name: python-api-client
+  environment:
+   - "SERVER_PORT=7654"
+   - GATEWAY_SERVER_HOST=$HOSTNAME
+  ports:
+   - 7654:7654
+  expose:
+   - 7654
+  tty: true
+  restart: unless-stopped
+  network_mode: "bridge"
+  image: 512138428247.dkr.ecr.eu-west-1.amazonaws.com/com/gsi/apu/smart-api/python-api-client:gsi-2001-smart-api-build.8
+ gsi-sm-resource-state:
+  container_name: gsi-sm-resource-state
+  environment:
+   - SERVER_PORT=8093
+   - SERVER_HOST=$HOSTNAME
+   - POSTGRESQL_HOST=$HOSTNAME
+   - REDIS_HOST=$HOSTNAME
+   - RESOURCE_MANAGER_HOST=$HOSTNAME
+   - RESOURCE_STATE_HOST=$HOSTNAME
+   - DATA_LOADER_HOST=$HOSTNAME
+   - BOARD_PYTHON_HOST=$HOSTNAME
+   - BOARD_HOST=$HOSTNAME
+   - DATA_MANAGER_HOST=$HOSTNAME
+   - SEARCH_HOST=$HOSTNAME
+  ports:
+   - 8093:8093
+  expose:
+   - 8093
+  tty: true
+  restart: unless-stopped
+  network_mode: "bridge"
+  depends_on:
+   - postgresql
+   - redis
+  image: 512138428247.dkr.ecr.eu-west-1.amazonaws.com/com/gsi/apu/smart-api/resource-state:gsi-2001-smart-api-build.8
+ gsi-sm-search-api:
+  container_name: gsi-sm-search-api
+  environment:
+   - SERVER_PORT=8098
+   - SERVER_HOST=$HOSTNAME
+   - POSTGRESQL_HOST=$HOSTNAME
+   - REDIS_HOST=$HOSTNAME
+   - RESOURCE_MANAGER_HOST=$HOSTNAME
+   - RESOURCE_STATE_HOST=$HOSTNAME
+   - DATA_LOADER_HOST=$HOSTNAME
+   - BOARD_PYTHON_HOST=$HOSTNAME
+   - BOARD_HOST=$HOSTNAME
+   - DATA_MANAGER_HOST=$HOSTNAME
+   - SEARCH_HOST=$HOSTNAME
+  ports:
+   - 8098:8098
+  expose:
+   - 8098
+  tty: true
+  restart: unless-stopped
+  network_mode: "bridge"
+  depends_on:
+   - postgresql
+   - redis
+  image: 512138428247.dkr.ecr.eu-west-1.amazonaws.com/com/gsi/apu/smart-api/search-api:gsi-2001-smart-api-build.8
+ gsi-sm-conf-api:
+  container_name: gsi-sm-conf-api
+  environment:
+   - SERVER_PORT=8097
+   - SERVER_HOST=$HOSTNAME
+   - POSTGRESQL_HOST=$HOSTNAME
+   - RESOURCE_MANAGER_HOST=$HOSTNAME
+   - RESOURCE_STATE_HOST=$HOSTNAME
+   - DATA_LOADER_HOST=$HOSTNAME
+   - BOARD_PYTHON_HOST=$HOSTNAME
+   - BOARD_HOST=$HOSTNAME
+   - DATA_MANAGER_HOST=$HOSTNAME
+   - SECURITY_HOST=$HOSTNAME
+   - SEARCH_HOST=$HOSTNAME
+   - FAISSBM_HOST=$HOSTNAME
+  volumes:
+   - /data:/data
+  ports:
+   - 8097:8097
+  expose:
+   - 8097
+  tty: true
+  restart: unless-stopped
+  network_mode: "bridge"
+  depends_on:
+   - postgresql
+  image: 512138428247.dkr.ecr.eu-west-1.amazonaws.com/com/gsi/apu/smart-api/conf-api:gsi-2001-smart-api-build.8
+ gsi-sm-resource-manager:
+  container_name: gsi-sm-resource-manager
+  environment:
+   - SERVER_PORT=8094
+   - SERVER_HOST=$HOSTNAME
+   - POSTGRESQL_HOST=$HOSTNAME
+   - REDIS_HOST=$HOSTNAME
+   - RESOURCE_MANAGER_HOST=$HOSTNAME
+   - RESOURCE_STATE_HOST=$HOSTNAME
+   - DATA_LOADER_HOST=$HOSTNAME
+   - BOARD_PYTHON_HOST=$HOSTNAME
+   - BOARD_HOST=$HOSTNAME
+   - DATA_MANAGER_HOST=$HOSTNAME
+   - SEARCH_HOST=$HOSTNAME
+  ports:
+   - 8094:8094
+  expose:
+   - 8094
+  tty: true
+  restart: unless-stopped
+  network_mode: "bridge"
+  depends_on:
+   - postgresql
+   - redis
+  image: 512138428247.dkr.ecr.eu-west-1.amazonaws.com/com/gsi/apu/smart-api/resource-manager:gsi-2001-smart-api-build.8
+ gsi-sm-security-api:
+  container_name: gsi-sm-security-api
+  environment:
+   - SERVER_PORT=8091
+   - SERVER_HOST=$HOSTNAME
+   - POSTGRESQL_HOST=$HOSTNAME
+   - REDIS_HOST=$HOSTNAME
+  ports:
+   - 8091:8091
+  expose:
+   - 8091
+  tty: true
+  restart: unless-stopped
+  network_mode: "bridge"
+  depends_on:
+   - postgresql
+   - redis
+  image: 512138428247.dkr.ecr.eu-west-1.amazonaws.com/com/gsi/apu/smart-api/security-api:gsi-2001-smart-api-build.8
+ redis:
+  container_name: redis
+  environment:
+   - "SERVER_PORT=6379"
+  volumes:
+   - $REDIS_VOLUME_DIR:/data
+  ports:
+   - 6379:6379
+  expose:
+   - 6379
+  tty: true
+  network_mode: "bridge"
+  image: 512138428247.dkr.ecr.eu-west-1.amazonaws.com/com/gsi/apu/smart-api/redis:gsi-2001-smart-api-build.8
+ python-faiss-benchmark-apu:
+  container_name: python-faiss-benchmark-apu
+  environment:
+   - "SERVER_PORT=7707"
+  volumes:
+   - /sys/kernel/config:/sys/kernel/config
+   - /dev:/dev
+   - /efs:/efs
+  ports:
+   - 7707:7707
+  expose:
+   - 7707
+  tty: true
+  privileged: true
+  restart: unless-stopped
+  network_mode: "bridge"
+  image: 512138428247.dkr.ecr.eu-west-1.amazonaws.com/com/gsi/apu/smart-api/python-faiss-benchmark-apu:gsi-2001-smart-api-build.11
+ gsi-sm-apps:
+  container_name: gsi-sm-apps
+  environment:
+   - SERVER_PORT=5000
+   - HOST_ENDPOINT_NAME=$HOSTNAME
+  ports:
+   - 5000:5000
+  expose:
+   - 5000
+  tty: true
+  working_dir: /react-app
+  network_mode: "bridge"
+  working_dir: /react-app
+  image: 512138428247.dkr.ecr.eu-west-1.amazonaws.com/com/gsi/apu/system-web/react-app
+ pgadmin4:
+  container_name: pgadmin4
+  environment:
+   - PGADMIN_DEFAULT_EMAIL=postgres
+   - PGADMIN_DEFAULT_PASSWORD=postgres
+  ports:
+   - 36673:80
+  tty: true
+  restart: unless-stopped
+  network_mode: "bridge"
+  depends_on:
+   - postgresql
+  image: 512138428247.dkr.ecr.eu-west-1.amazonaws.com/dpage/pgadmin4
+ gsi-sm-apps-api:
+  container_name: gsi-sm-apps-api
+  environment:
+   - SERVER_PORT=8087
+   - SERVER_HOST=$HOSTNAME
+   - MOLECULES_HOST=$HOSTNAME
+   - IMAGES_HOST=$HOSTNAME
+   - FAISS_HOST=$HOSTNAME
+   - FACE_RECOGNITION_HOST=$HOSTNAME
+   - NLP_TEXT_SEARCH_HOST=$HOSTNAME
+   - SECURITY_HOST=$HOSTNAME
+   - POSTGRESQL_HOST=$HOSTNAME
+   - GATEWAY_SERVER_HOST=$HOSTNAME
+   - RESOURCE_STATE_HOST=$HOSTNAME
+   - DATA_LOADER_HOST=$HOSTNAME
+  ports:
+   - 8087:8087
+  expose:
+   - 8087
+  tty: true
+  restart: unless-stopped
+  network_mode: "bridge"
+  depends_on:
+   - postgresql
+  image: 512138428247.dkr.ecr.eu-west-1.amazonaws.com/com/gsi/apu/smart-api/apps-api:gsi-2001-smart-api-build.8
+ python-faiss:
+  container_name: python-faiss
+  environment:
+   - "SERVER_PORT=8085"
+  volumes:
+   - /efs/data/public/knn-demo:/efs/data/public/knn-demo
+  ports:
+   - 8085:8085
+  expose:
+   - 8085
+  tty: true
+  restart: unless-stopped
+  network_mode: "bridge"
+  image: 512138428247.dkr.ecr.eu-west-1.amazonaws.com/com/gsi/apu/smart-api/python-faiss:gsi-2001-smart-api-build.10
+ gsi-sm-data-loader:
+  container_name: gsi-sm-data-loader
+  environment:
+   - SERVER_PORT=8095
+   - SERVER_HOST=$HOSTNAME
+   - POSTGRESQL_HOST=$HOSTNAME
+   - REDIS_HOST=$HOSTNAME
+   - RESOURCE_MANAGER_HOST=$HOSTNAME
+   - RESOURCE_STATE_HOST=$HOSTNAME
+   - DATA_LOADER_HOST=$HOSTNAME
+   - BOARD_PYTHON_HOST=$HOSTNAME
+   - BOARD_HOST=$HOSTNAME
+   - DATA_MANAGER_HOST=$HOSTNAME
+   - SEARCH_HOST=$HOSTNAME
+  ports:
+   - 8095:8095
+  expose:
+   - 8095
+  tty: true
+  restart: unless-stopped
+  network_mode: "bridge"
+  depends_on:
+   - postgresql
+   - redis
+  image: 512138428247.dkr.ecr.eu-west-1.amazonaws.com/com/gsi/apu/smart-api/data-loader:gsi-2001-smart-api-build.8
+ gsi-sm-api-gateway:
+  container_name: gsi-sm-api-gateway
+  environment:
+   - SERVER_PORT=8099
+   - SERVER_HOST=$HOSTNAME
+   - POSTGRESQL_HOST=$HOSTNAME
+   - REDIS_HOST=$HOSTNAME
+   - RESOURCE_MANAGER_HOST=$HOSTNAME
+   - RESOURCE_STATE_HOST=$HOSTNAME
+   - DATA_LOADER_HOST=$HOSTNAME
+   - BOARD_PYTHON_HOST=$HOSTNAME
+   - BOARD_HOST=$HOSTNAME
+   - DATA_MANAGER_HOST=$HOSTNAME
+   - SEARCH_HOST=$HOSTNAME
+   - TRAIN_HOST=$HOSTNAME
+  volumes:
+   - /data:/data
+  ports:
+   - 8099:8099
+  expose:
+   - 8099
+  tty: true
+  restart: unless-stopped
+  network_mode: "bridge"
+  depends_on:
+   - postgresql
+   - redis
+  image: 512138428247.dkr.ecr.eu-west-1.amazonaws.com/com/gsi/apu/smart-api/api-gateway:gsi-2001-smart-api-build.8
+ light-resource-server:
+  container_name: light-resource-server
+  environment:
+   - "SERVER_PORT=8080"
+  volumes:
+   - /efs/data/public/resources-server:/opt/www
+  ports:
+   - 8090:8080
+  expose:
+   - 8080
+  tty: true
+  network_mode: "bridge"
+  image: 512138428247.dkr.ecr.eu-west-1.amazonaws.com/webratio/nodejs-http-server:gsi-2001-smart-api-build.12
+ postgresql:
+  container_name: postgresql
+  environment:
+   - "SERVER_PORT=5432"
+  volumes:
+   - $POSTGRESQL_VOLUME_DIR:/var/lib/postgresql
+  ports:
+   - 5432:5432
+  expose:
+   - 5432
+  tty: true
+  restart: unless-stopped
+  network_mode: "bridge"
+  image: 512138428247.dkr.ecr.eu-west-1.amazonaws.com/com/gsi/apu/smart-api/postgresql:gsi-2001-smart-api-build.8
+ python-biovia-client:
+  container_name: python-biovia-client
+  environment:
+   - "SERVER_PORT=5001"
+   - "DATA_PATH=/data"
+   - POSTGRES_HOST=$HOSTNAME
+   - "SM_GW_PORT=8099"
+   - HOSTNAME=$HOSTNAME
+   - "POSTGRES_USERNAME=postgres"
+   - "POSTGRES_PASS=postgres"
+   - "POSTGRES_PORT=5432"
+   - "POSTGRES_DB=sm_db"
+  volumes:
+   - /data:/data
+  ports:
+   - 5001:5001
+  expose:
+   - 5001
+  tty: true
+  privileged: true
+  restart: unless-stopped
+  network_mode: "bridge"
+  image: 512138428247.dkr.ecr.eu-west-1.amazonaws.com/com/gsi/smart-api/python-biovia-client:gsi-2001-smart-api-build.8
+ gsi-sm-data-manager:
+  container_name: gsi-sm-data-manager
+  environment:
+   - SERVER_PORT=8092
+   - SERVER_HOST=$HOSTNAME
+   - POSTGRESQL_HOST=$HOSTNAME
+   - REDIS_HOST=$HOSTNAME
+   - RESOURCE_MANAGER_HOST=$HOSTNAME
+   - RESOURCE_STATE_HOST=$HOSTNAME
+   - DATA_LOADER_HOST=$HOSTNAME
+   - BOARD_PYTHON_HOST=$HOSTNAME
+   - BOARD_HOST=$HOSTNAME
+   - DATA_MANAGER_HOST=$HOSTNAME
+   - SEARCH_HOST=$HOSTNAME
+  ports:
+   - 8092:8092
+  expose:
+   - 8092
+  tty: true
+  restart: unless-stopped
+  network_mode: "bridge"
+  depends_on:
+   - postgresql
+   - redis
+  image: 512138428247.dkr.ecr.eu-west-1.amazonaws.com/com/gsi/apu/smart-api/data-manager:gsi-2001-smart-api-build.8
+ python-dataset-utils:
+  container_name: python-dataset-utils
+  environment:
+   - "SERVER_PORT=7777"
+  volumes:
+   - /efs/data/public/knn-demo:/efs/data/public/knn-demo
+   - /data:/data
+  ports:
+   - 7777:7777
+  expose:
+   - 7777
+  tty: true
+  restart: unless-stopped
+  network_mode: "bridge"
+  image: 512138428247.dkr.ecr.eu-west-1.amazonaws.com/com/gsi/apu/smart-api/python-dataset-util:gsi-2001-smart-api-build.9
+ gsi-sm-board-api:
+  container_name: gsi-sm-board-api
+  environment:
+   - SERVER_PORT=8096
+   - SERVER_HOST=$HOSTNAME
+   - POSTGRESQL_HOST=$HOSTNAME
+   - REDIS_HOST=$HOSTNAME
+   - RESOURCE_MANAGER_HOST=$HOSTNAME
+   - RESOURCE_STATE_HOST=$HOSTNAME
+   - DATA_LOADER_HOST=$HOSTNAME
+   - BOARD_PYTHON_HOST=$HOSTNAME
+   - BOARD_HOST=$HOSTNAME
+   - DATA_MANAGER_HOST=$HOSTNAME
+   - SEARCH_HOST=$HOSTNAME
+  ports:
+   - 8096:8096
+  expose:
+   - 8096
+  tty: true
+  restart: unless-stopped
+  network_mode: "bridge"
+  depends_on:
+   - postgresql
+   - redis
+  image: 512138428247.dkr.ecr.eu-west-1.amazonaws.com/com/gsi/apu/smart-api/board-api:gsi-2001-smart-api-build.8
+ python-gnl-apu-board:
+  container_name: python-gnl-apu-board
+  environment:
+   - "SERVER_PORT=7780"
+  volumes:
+   - /efs:/efs
+   - /sys/kernel/config:/sys/kernel/config
+   - /lib/modules:/lib/modules
+   - /dev:/dev
+   - /data:/data
+   - /home/public:/home/public
+  ports:
+   - 7780:7780
+  expose:
+   - 7780
+  tty: true
+  privileged: true
+  restart: unless-stopped
+  network_mode: "bridge"
+  image: 512138428247.dkr.ecr.eu-west-1.amazonaws.com/com/gsi/apu/smart-api/python-gnl-apu-board:gsi-2001-smart-api-build.8
