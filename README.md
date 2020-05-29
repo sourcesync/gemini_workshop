@@ -2,7 +2,7 @@
 
 The code in this repository is part of the hands-on tutorial portion of GSI Technology's Gemini APU Workshop.
 
-The Gemini Workshop is composed of the following pieces:
+The workshop is composed of the following parts:
 1. Exploring The RadioML Dataset
 2. Training A Deep Learning-based Signal Vectorizer
 3. Implementing KNN-based Similarity Search For Signal Classification On Gemini
