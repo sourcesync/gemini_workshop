@@ -11,13 +11,15 @@ The following instructions will detail how to install and run the workshop compo
 
 # Exploring the RadioML Dataset
 
-In this part of the workshop, participants will use Jupyter Notebooks to learn python and use the notebook's integrated visual tools to explore the RadioML dataset.
+In this part of the workshop, participants will learn:
+* basic python programming
+* basic use of jupyter notebooks
+* some exploratory data analysis and visualization skills
 
 ## Prerequisites
 
 You will need the following:
-* a machine with Python3 and Jupyter Notebook support
-
+* a machine with python3 and jupyter notebook support installed
 
 # Training A Deep Learning-based Signal Vectorizer
 
