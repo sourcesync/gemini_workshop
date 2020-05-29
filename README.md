@@ -4,8 +4,8 @@ The code in this repository is part of the hands-on tutorial portion of GSI Tech
 
 The workshop is composed of the following parts:
 1. Exploring The RadioML Dataset
-2. Training A Deep Learning-based Signal Vectorizer
-3. Implementing KNN-based Similarity Search For Signal Classification On Gemini
+2. Training A Deep Learning-based RF Signal Vectorizer
+3. Implementing KNN-based Similarity Search For RF Signal Identification Using Gemini
 
 The following instructions will detail how to install and run the workshop components.
 
