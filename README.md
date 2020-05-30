@@ -27,11 +27,11 @@ You will need a machine with the following installed:
 
 Follow these installation steps:
 
-* clone this repository to your machine:
+* Clone this repository to your machine:
 
 ```>> git clone https://github.com/gosha1128/gemini_workshop.git```
 
-* use the GCP tools to download the dataset to your machine:
+* Use the GCP tools to download the dataset to your machine:
 
 ```>> gsutil -m cp -r gs://deepsignal//gemini_workshop .```
 
@@ -43,11 +43,11 @@ To run the notebook, follow these steps:
 
 ```>> cd notebooks/ExploreTheRFSignalDataset```
 
-* launch the notebook server via the run_jupyter.sh script with path to the dataset:
+* Launch the notebook server via the run_jupyter.sh script with path to the dataset:
 
 ```>> ./run_jupyter.sh  /path/to/dataset```
 
-* the script will output the URL you should enter into your browser.
+* The script will output the URL you should use.  Browse to that location in your favorite browser.  You will land in the jupyter environment.  Choose the "ExploreTheRFSignalDataset" notebook in the left hand pane to launch it.  Follow the directions inside the notebook.
 
 # Training A Deep Learning-based Signal Vectorizer
 
