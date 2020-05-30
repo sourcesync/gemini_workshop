@@ -18,8 +18,16 @@ In this part of the workshop, participants will learn:
 
 ## Prerequisites
 
-You will need the following:
-* a machine with python3 and jupyter notebook support installed
+You will a machine with the following installed:
+* python3
+* jupyter notebook support 
+* the Google Cloud Platform (GCP) command line utilities
+
+## Installation
+
+Follow these installation steps:
+* use the GCP tools to download the dataset to your machine
+```>> gsutil -m cp gs://deepsignal//gemini_workshop//exploring_the_radioml_dataset .```
 
 # Training A Deep Learning-based Signal Vectorizer
 
