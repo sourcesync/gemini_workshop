@@ -62,6 +62,10 @@ For this part of the workshop, you will need:
 * a machine with a browser
 * a Google Colaboratory account
 
+## Run The Notebook
+
+[ TBD ]
+
 # Vectorize An RF Signal Dataset
 
 In this part of the workshop, participants will learn:
@@ -73,6 +77,10 @@ For this part of the workshop, you will need:
 * a machine with a browser
 * a Google Colaboratory account
 
+## Run The Notebook
+
+[ TBD ]
+
 # Implement KNN-based Similarity Search For RF Signal Identification Using Gemini
 
 In this part of the workshop, participants will learn:
@@ -83,11 +91,38 @@ In this part of the workshop, participants will learn:
 ## Prerequisites
 
 * An Ubuntu Linux 18.04 machine with Python3.6 installed
+* the Google Cloud Platform (GCP) command line utilities
 * An attached Leda-G board ( it should have already passed at least 1 iteration of dev_diagnostics and you should know its local ip address )
 * Gemini Software version 100.9.10.2-rc
 * GNLPY version 00.17.00
 
 ## Installation
+
+Follow these installation steps:
+
+* Clone this repository to your machine:
+
+```>> git clone https://github.com/gosha1128/gemini_workshop.git```
+
+* If you haven't done so already, use the GCP tools to download the dataset to your machine:
+
+```>> gsutil -m cp -r gs://deepsignal//gemini_workshop .```
+
+## Run The Notebook
+
+To run the notebook, follow these steps:
+
+* cd into the notebook's directory in the repo:
+
+```>> cd notebooks/GeminiKNN```
+
+* Launch the notebook server via the run_jupyter.sh script with path to the dataset:
+
+```>> ./run_jupyter.sh  /path/to/dataset```
+
+* The script will output the URL you should use.  Browse to that location in your favorite browser.  You will land in the jupyter environment.  Choose the "GeminiKNN" notebook in the left hand pane to launch it.  Follow the directions inside the notebook.
+
+## Run Without The Notebook
 
 # Troubleshooting
 
