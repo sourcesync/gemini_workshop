@@ -73,7 +73,7 @@ For this part of the workshop, you will need:
 * a machine with a browser
 * a Google Colaboratory account
 
-# Implement KNN-based Similarity Search For Signal Classification Using Gemini
+# Implement KNN-based Similarity Search For RF Signal Identification Using Gemini
 
 In this part of the workshop, participants will learn:
 * build a similarity search database of RF signal fingerprints
