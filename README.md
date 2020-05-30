@@ -58,7 +58,13 @@ For this part of the workshop, you will need:
 * a machine with a browser
 * a Google Colaboratory account
 
-## 
+# Vectorize An RF Signal Dataset
+
+## Prerequisites
+
+For this part of the workshop, you will need:
+* a machine with a browser
+* a Google Colaboratory account
 
 # Implementing KNN-based Similarity Search For Signal Classification On Gemini
 
