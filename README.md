@@ -3,13 +3,13 @@
 The code in this repository is part of the hands-on tutorial portion of GSI Technology's Gemini APU Workshop.
 
 The workshop is composed of the following parts:
-1. Exploring The RF Signal Dataset
-2. Training A Deep Learning-based RF Signal Vectorizer
-3. Implementing KNN-based Similarity Search For RF Signal Identification Using Gemini
+1. Explore The RF Signal Dataset
+2. Train A Deep Learning-based RF Signal Vectorizer
+3. Implement KNN-based Similarity Search For RF Signal Identification Using Gemini
 
 The following instructions will detail how to install and run the workshop components.
 
-# Exploring the RF Signal Dataset
+# Explore the RF Signal Dataset
 
 In this part of the workshop, participants will learn:
 * basic python programming
@@ -41,7 +41,7 @@ To run the notebook, follow these steps:
 
 * cd into the notebook's directory in the repo:
 
-```>> cd notebooks/ExploringTheRFSignalDataset```
+```>> cd notebooks/ExploreTheRFSignalDataset```
 
 * launch the notebook server via the run_jupyter.sh script with path to the dataset:
 
