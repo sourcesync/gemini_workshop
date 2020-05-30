@@ -28,13 +28,19 @@ You will a machine with the following installed:
 Follow these installation steps:
 * clone this repository to your machine:
 
-```git clone ```
+```>> git clone https://github.com/gosha1128/gemini_workshop.git```
 
 * use the GCP tools to download the dataset to your machine:
 
-```>> gsutil -m cp gs://deepsignal//gemini_workshop//exploring_the_radioml_dataset .```
+```>> gsutil -m cp gs://deepsignal//gemini_workshop .```
 
-* 
+## Run The Notebook
+
+To run the notebook, follow these steps:
+* cd into the notebook's directory in the repo:
+```>> cd notebooks/ExploringTheRFSignalDataset```
+* launch the notebook server:
+```>> ./run_jupyter.sh```
 
 # Training A Deep Learning-based Signal Vectorizer
 
