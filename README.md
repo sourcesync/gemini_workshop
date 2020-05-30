@@ -5,6 +5,7 @@ The code in this repository is part of the hands-on tutorial portion of GSI Tech
 The workshop is composed of the following parts:
 1. Explore The RF Signal Dataset
 2. Train A Deep Learning-based RF Signal Vectorizer
+3. Vectorize An RF Signal Dataset
 3. Implement KNN-based Similarity Search For RF Signal Identification Using Gemini
 
 The following instructions will detail how to install and run the workshop components.
@@ -49,13 +50,15 @@ To run the notebook, follow these steps:
 
 * The script will output the URL you should use.  Browse to that location in your favorite browser.  You will land in the jupyter environment.  Choose the "ExploreTheRFSignalDataset" notebook in the left hand pane to launch it.  Follow the directions inside the notebook.
 
-# Training A Deep Learning-based Signal Vectorizer
+# Train A Deep Learning-based Signal Vectorizer
 
 ## Prerequisites
 
-For "Training A Deep Learning-based Signal Vectorizer", you need:
-* a machine with Python3 and Jupyter Notebook support ( we use Colaboratory in the workshop )
-* an attached GPU is preferred
+For this part of the workshop, you will need:
+* a machine with a browser
+* a Google Colaboratory account
+
+## 
 
 # Implementing KNN-based Similarity Search For Signal Classification On Gemini
 
