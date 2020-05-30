@@ -38,10 +38,14 @@ Follow these installation steps:
 ## Run The Notebook
 
 To run the notebook, follow these steps:
+
 * cd into the notebook's directory in the repo:
+
 ```>> cd notebooks/ExploringTheRFSignalDataset```
-* launch the notebook server:
-```>> ./run_jupyter.sh```
+
+* launch the notebook server via the run_jupyter.sh script with path to the dataset:
+
+```>> ./run_jupyter.sh  /path/to/dataset```
 
 # Training A Deep Learning-based Signal Vectorizer
 
