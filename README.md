@@ -18,7 +18,7 @@ In this part of the workshop, participants will learn:
 
 ## Prerequisites
 
-You will a machine with the following installed:
+You will need a machine with the following installed:
 * python3
 * jupyter notebook support 
 * the Google Cloud Platform (GCP) command line utilities
@@ -26,6 +26,7 @@ You will a machine with the following installed:
 ## Installation
 
 Follow these installation steps:
+
 * clone this repository to your machine:
 
 ```>> git clone https://github.com/gosha1128/gemini_workshop.git```
