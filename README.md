@@ -16,6 +16,7 @@ In this part of the workshop, participants will learn:
 * basic python programming
 * basic use of jupyter notebooks
 * some exploratory data analysis and visualization skills
+* loading and visualizing the RF Signal dataset
 
 ## Prerequisites
 
@@ -52,6 +53,9 @@ To run the notebook, follow these steps:
 
 # Train A Deep Learning-based Signal Vectorizer
 
+In this part of the workshop, participants will learn:
+* use TensorFlow/Keras to train a model that vectorizes raw RF signals
+
 ## Prerequisites
 
 For this part of the workshop, you will need:
@@ -60,6 +64,9 @@ For this part of the workshop, you will need:
 
 # Vectorize An RF Signal Dataset
 
+In this part of the workshop, participants will learn:
+* use TensorFlow/Keras to vectorize an RF signal dataset
+
 ## Prerequisites
 
 For this part of the workshop, you will need:
@@ -67,6 +74,11 @@ For this part of the workshop, you will need:
 * a Google Colaboratory account
 
 # Implementing KNN-based Similarity Search For Signal Classification On Gemini
+
+In this part of the workshop, participants will learn:
+* build a similarity search database of RF signal fingerprints
+* apply KNN to query signals for RF signal identification
+* use the Gemini Python API
 
 ## Prerequisites
 
