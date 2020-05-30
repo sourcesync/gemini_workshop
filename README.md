@@ -47,6 +47,8 @@ To run the notebook, follow these steps:
 
 ```>> ./run_jupyter.sh  /path/to/dataset```
 
+* the script will output the URL you should enter into your browser.
+
 # Training A Deep Learning-based Signal Vectorizer
 
 ## Prerequisites
