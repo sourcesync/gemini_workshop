@@ -27,6 +27,7 @@ You will a machine with the following installed:
 
 Follow these installation steps:
 * use the GCP tools to download the dataset to your machine
+
 ```>> gsutil -m cp gs://deepsignal//gemini_workshop//exploring_the_radioml_dataset .```
 
 # Training A Deep Learning-based Signal Vectorizer
