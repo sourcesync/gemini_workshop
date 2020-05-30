@@ -3,13 +3,13 @@
 The code in this repository is part of the hands-on tutorial portion of GSI Technology's Gemini APU Workshop.
 
 The workshop is composed of the following parts:
-1. Exploring The RadioML Dataset
+1. Exploring The RF Signal Dataset
 2. Training A Deep Learning-based RF Signal Vectorizer
 3. Implementing KNN-based Similarity Search For RF Signal Identification Using Gemini
 
 The following instructions will detail how to install and run the workshop components.
 
-# Exploring the RadioML Dataset
+# Exploring the RF Signal Dataset
 
 In this part of the workshop, participants will learn:
 * basic python programming
@@ -26,9 +26,15 @@ You will a machine with the following installed:
 ## Installation
 
 Follow these installation steps:
-* use the GCP tools to download the dataset to your machine
+* clone this repository to your machine:
+
+```git clone ```
+
+* use the GCP tools to download the dataset to your machine:
 
 ```>> gsutil -m cp gs://deepsignal//gemini_workshop//exploring_the_radioml_dataset .```
+
+* 
 
 # Training A Deep Learning-based Signal Vectorizer
 
