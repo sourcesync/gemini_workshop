@@ -1,3 +1,5 @@
+![ A TSNE Plot Of the RF Signal Fingerprints ] ( tsne.png )
+
 # Introduction
 
 The code in this repository is part of the hands-on tutorial portion of GSI Technology's Gemini APU Workshop.
@@ -93,8 +95,7 @@ In this part of the workshop, participants will learn:
 * An Ubuntu Linux 18.04 machine with Python3.6 installed
 * the Google Cloud Platform (GCP) command line utilities
 * An attached Leda-G board ( it should have already passed at least 1 iteration of dev_diagnostics and you should know its local ip address )
-* Gemini Software version 100.9.10.2-rc
-* GNLPY version 00.17.00
+* Gemini Software version=100.9.10.2-rc and GNLPY=00.17.00 ( these are provided via the "gemini_eval_100.9.10.2-rc" package, please see the notebooks/GeminiKNN/run_jupyter.sh script to see/change the installation directories. )
 
 ## Installation
 
@@ -122,9 +123,6 @@ To run the notebook, follow these steps:
 
 * The script will output the URL you should use.  Browse to that location in your favorite browser.  You will land in the jupyter environment.  Choose the "GeminiKNN" notebook in the left hand pane to launch it.  Follow the directions inside the notebook.
 
-## Run Without The Notebook
-
-# Troubleshooting
 
 
 
