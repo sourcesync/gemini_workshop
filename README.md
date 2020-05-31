@@ -1,4 +1,4 @@
-[ tsne.png ] ( tsne.png )
+![ A TSNE Plot Of the RF Signal Fingerprints ] ( tsne.png )
 
 # Introduction
 
