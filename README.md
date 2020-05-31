@@ -37,7 +37,7 @@ Follow these installation steps:
 
 * Use the GCP tools to download the dataset to your machine:
 
-```>> gsutil -m cp -r gs://deepsignal//gemini_workshop .```
+```>> gsutil -m cp -r gs://deepsignal/data/gemini_workshop .```
 
 ## Run The Notebook
 
@@ -107,7 +107,7 @@ Follow these installation steps:
 
 * If you haven't done so already, use the GCP tools to download the dataset to your machine:
 
-```>> gsutil -m cp -r gs://deepsignal//gemini_workshop .```
+```>> gsutil -m cp -r gs://deepsignal/data/gemini_workshop .```
 
 ## Run The Notebook
 
