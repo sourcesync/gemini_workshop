@@ -1,3 +1,5 @@
+[ tsne.png ] ( tsne.png )
+
 # Introduction
 
 The code in this repository is part of the hands-on tutorial portion of GSI Technology's Gemini APU Workshop.
