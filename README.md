@@ -93,8 +93,7 @@ In this part of the workshop, participants will learn:
 * An Ubuntu Linux 18.04 machine with Python3.6 installed
 * the Google Cloud Platform (GCP) command line utilities
 * An attached Leda-G board ( it should have already passed at least 1 iteration of dev_diagnostics and you should know its local ip address )
-* Gemini Software version 100.9.10.2-rc
-* GNLPY version 00.17.00
+* Gemini Software version=100.9.10.2-rc and GNLPY=00.17.00 ( these are provided via the "gemini_eval_100.9.10.2-rc" package. )
 
 ## Installation
 
