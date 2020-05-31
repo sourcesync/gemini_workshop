@@ -85,10 +85,10 @@ For this part of the workshop, you will need:
 
 # Implement KNN-based Similarity Search For RF Signal Identification Using Gemini
 
-In this part of the workshop, participants will learn:
+In this part of the workshop, participants will do the following:
 * build a similarity search database of RF signal fingerprints
 * apply KNN to query signals for RF signal identification
-* use the Gemini Python API
+* use the Gemini Python GNL API
 
 ## Prerequisites
 
