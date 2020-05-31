@@ -121,9 +121,6 @@ To run the notebook, follow these steps:
 
 * The script will output the URL you should use.  Browse to that location in your favorite browser.  You will land in the jupyter environment.  Choose the "GeminiKNN" notebook in the left hand pane to launch it.  Follow the directions inside the notebook.
 
-## Run Without The Notebook
-
-# Troubleshooting
 
 
 
