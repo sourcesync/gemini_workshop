@@ -87,7 +87,7 @@ def classify( db, query, I, k=5, plot=False):
     return vote_labels
         
     
-def randisplay(predictions, db, query, threshold=0):
+def randisplay(predictions, db, query, threshold=0, k=5):
    
     '''Choose 3 random query signals (above an SNR threshold) and display the KNN matches.'''
 
