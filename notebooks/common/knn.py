@@ -91,7 +91,8 @@ def randisplay(predictions, db, query, threshold=0, k=5):
    
     '''Choose 3 random query signals (above an SNR threshold) and display the KNN matches.'''
 
-    ranset = random.sample( range(len(query.raw_signals) ), len(query.raw_signals) )
+    # TODO: This is hacked up to use the 50 query dataset
+    ranset = random.sample( range(len(query.raw_signals[0:50,:]) ), len(query.raw_signals[0:50,:]) )
     
     t = range(1024)
     

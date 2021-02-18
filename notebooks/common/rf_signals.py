@@ -38,6 +38,7 @@ bit_vectors = None
 raw_signals = None
 labels = None
 snrs = None
+path = "/efs/data/public/signal/bit_vector_train50_padded256_f32.npy" #TODO: hard-coded for the demo
 
 def load(deepsignal_data_dir=None, count=100000):
 

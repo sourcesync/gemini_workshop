@@ -12,8 +12,9 @@ bit_vectors = None
 raw_signals = None
 snrs = None
 #labels = None
+path = "/efs/data/public/signal/bit_vector_test50_padded256_f32_50.npy" #TODO: hard-coded for the demo
 
-def load(deepsignal_data_dir=None, count=5000):
+def load(deepsignal_data_dir=None, count=50): #TODO: changed from 5000 for the demo
 
     '''Load the "known" signals database using the test set data.'''
 
