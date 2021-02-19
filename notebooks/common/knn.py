@@ -87,7 +87,7 @@ def classify( db, query, I, k=5, plot=False):
     return vote_labels
         
     
-def randisplay(predictions, db, query, threshold=0, k=5):
+def randisplay(predictions, db, query, threshold=0, k=5, color='white'):
    
     '''Choose 3 random query signals (above an SNR threshold) and display the KNN matches.'''
 
@@ -128,7 +128,7 @@ def randisplay(predictions, db, query, threshold=0, k=5):
         
         wave_type = classes[ idx ]
         title = "KNN predicts " + wave_type
-        ax[0, c].set_title(title)
+        ax[0, c].set_title(title, color=color, fontweight='bold')
         xmax = 1024
         ymax = max([max(first),max(second)])
         ax[0, c].set_xticks([])
@@ -146,7 +146,7 @@ def randisplay(predictions, db, query, threshold=0, k=5):
             idx = np.where(db.labels[m] == 1)[0][0]
             wave_type = classes[ idx ]
             title = "Top-%d is %s" % (nr+1, wave_type)
-            ax[1+nr, c].set_title(title)
+            ax[1+nr, c].set_title(title, color=color, fontweight='bold')
             xmax = 1024
             ymax = max([max(first),max(second)])
             ax[1+nr, c].set_xticks([])

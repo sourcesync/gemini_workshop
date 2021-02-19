@@ -95,7 +95,7 @@ def get_labels():
     global snrs, labels
     return snrs, labels
    
-def randisplay():
+def randisplay(color='white'):
 
     '''Display 9 signals at random.'''
 
@@ -120,7 +120,7 @@ def randisplay():
         idx = np.where(labels[j] == 1)[0][0]
         wave_type = classes[ idx ]
         title = wave_type + ' Radio Wave'
-        ax[r,c].set_title(title)
+        ax[r,c].set_title(title, color=color, fontweight='bold')
         xmax = 1024
         ymax = max([max(first),max(second)])
         ax[r,c].set_xticks([])

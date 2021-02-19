@@ -57,7 +57,7 @@ def get_fingerprints():
 
     return bit_vectors
 
-def randisplay():
+def randisplay(color='white'):
 
     '''Choose 9 signals and randomly display.'''
 
@@ -82,7 +82,7 @@ def randisplay():
         #idx = np.where(labels[j] == 1)[0][0]
         #wave_type = classes[ idx ]
         title = '? Unknown Radio Wave'
-        ax[r,c].set_title(title)
+        ax[r,c].set_title(title, color=color, fontweight='bold')
         xmax = 1024
         ymax = max([max(first),max(second)])
         ax[r,c].set_xticks([])
